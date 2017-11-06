@@ -1,0 +1,84 @@
+function add_new_category()
+{
+    var checkInputs = validateInputs("add_category_frm");
+    if(checkInputs)
+    {
+        $("form#add_category_frm").submit();
+    }    
+}
+
+function update_category()
+{
+    var checkInputs = validateInputs("update_category_frm");
+    if(checkInputs)
+    {
+        $("form#update_category_frm").submit();
+    }    
+}
+
+
+
+function add_new_sub_category()
+{
+    var checkInputs = validateInputs("add_sub_category_frm");
+    if(checkInputs)
+    {
+        $("form#add_sub_category_frm").submit();
+    }    
+}
+
+function upd_new_sub_category()
+{
+    var checkInputs = validateInputs("upd_sub_category_frm");
+    if(checkInputs)
+    {
+        $("form#upd_sub_category_frm").submit();
+    }    
+}
+
+function view_category(id) {
+    $.ajax({
+        type: 'post',
+        url: site_path + 'admin/admin_ajax/view_category',
+        data: {
+            'id': id
+        },
+        success: function(data) {
+            if (data) {
+                var response = JSON.parse(data);
+                //alert(response[0].cat_id);
+                $("#upd_category_name").val(response[0].category_name);
+                $("#upd_category_id").val(response[0].category_id);
+            } else {
+                bootbox.alert(data.error + " !");
+            }
+        },
+        complete: function(data) {
+            
+        //$('#Edit_country').modal('show');
+        }
+    });
+}
+
+function view_sub_category(id) {
+    $.ajax({
+        type: 'post',
+        url: site_path + 'admin/admin_ajax/view_category',
+        data: {
+            'id': id
+        },
+        success: function(data) {
+            if (data) {
+                var response = JSON.parse(data);
+                //alert(response[0].category_name);
+                $("#update_sub_cat_name").val(response[0].category_name);
+                $("#update_sub_category_id").val(response[0].category_id);
+            } else {
+                bootbox.alert(data.error + " !");
+            }
+        },
+        complete: function(data) {  
+            //$('#Edit_country').modal('show');
+        }
+    });
+}

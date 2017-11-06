@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="css\style-main.css" rel="stylesheet" type="text/css"/>
+    <link href="css\bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+    .invoice {
+    position: relative;
+    background: #fff;
+    border: 1px solid #f4f4f4;
+    padding: 10px;
+    margin: 30px 0px;
+    }
+    .page-header {
+        margin: 10px 0 20px 0;
+        font-size: 22px;
+    }
+    </style>
+</head>
+<body>
+    <section class="content content_content" style="width: 80%; margin: auto;">
+                    <section class="invoice">
+                        <!-- title row -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                    <img src="images/logo-wide-bottom.png" style="width:150px; height:70px;" />
+                                    <small class="pull-right" style="margin-top:15px;"><strong>Doctor Appointment Invoice</strong></small>
+                                </h2>
+                            </div><!-- /.col -->
+                        </div>
+                        <!-- info row -->
+                        <div class="col-md-12 invoice-info">
+                        <div class="row invoice-info">                            
+                            <div class="col-sm-8 invoice-col">
+                                <strong>Patient Detail</strong>
+                                <address>
+                                    Name: Shahid<br>
+                                    Address:Kollanpur<br>
+                                    Phone:123456789<br>
+                                    Email:ggggg@gmail.com
+                                </address>
+                            </div><!-- /.col -->
+                            <div class="col-sm-4 invoice-col" style="text-align:right;">
+                                <b>Date:</b> 12-03-2017<br />
+                                <b>Invoice #:</b> 007612<br />
+                                <b>Trancation #:</b> 007612<br />
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                       </div>
+                        <!-- Table row -->
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <tbody>
+                                       <tr>
+                                            <td><b>Dr. Name</b></td>
+                                            <td>Amit Singh</td>
+                                       </tr>
+                                        <tr>
+                                            <td><b>Adrress</b></td>
+                                            <td>HIG-34, Sahara Homes, F-102, Shivaji Nagar Bhopal MP- 462016</td>
+                                       </tr>
+                                        <tr>
+                                            <td><b>Date</b></td>
+                                            <td>20-03-2017</td>
+                                       </tr>
+                                        <tr>
+                                            <td><b>Time</b></td>
+                                            <td>01 PM - 03 PM</td>
+                                       </tr>
+                                        <tr>
+                                            <td><b>Fee</b></td>
+                                            <td>Rs.250</td>
+                                       </tr>
+                                   </tbody>
+                                </table>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+
+                        <div class="row">
+                            <!-- accepted payments column -->
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>                                                                                        
+                                            <tr>
+                                            <td><b>Total</b></td>
+                                            <td><b>Rs.250</b></td>
+                                       </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+
+                        <!-- this row will not appear when printing -->
+                        <div class="row no-print">
+                            <div class="col-xs-12">
+                                <a class="btn btn-default" onclick="myFunction()"><i class="fa fa-print"></i> Print</a>
+                                <button class="btn btn-danger pull-right"><i class="fa fa-times"></i> Cancle</button>
+                                <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-user"></i> My Account</button>
+                                <br /><br />
+                                <p><b>For more details please write a mail us at support@healthpetals.com</b></p>
+                            </div>
+                            <script>
+                                function myFunction() {
+                                    window.print();
+                                }
+                            </script>
+                        </div>
+                    </section>
+		</section>
+</body>
+</html>

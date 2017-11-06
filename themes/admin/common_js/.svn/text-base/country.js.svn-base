@@ -1,0 +1,166 @@
+function add_new_country()
+{
+    var checkInputs = validateInputs("add_country");
+    if(checkInputs)
+    {
+        $("form#add_country").submit();
+    }    
+}
+
+function updatecountry()
+{
+    var checkInputs = validateInputs("update_country_frm");
+    if(checkInputs)
+    {
+        $("form#update_country_frm").submit();
+    }    
+}
+
+function update_region()
+{
+    var checkInputs = validateInputs("update_region_frm");
+    if(checkInputs)
+    {
+        $("form#update_region_frm").submit();
+    }    
+}
+
+function add_new_region()
+{
+    var checkInputs = validateInputs("add_region");
+    if(checkInputs)
+    {
+        $("form#add_region").submit();
+    }    
+}
+
+function add_new_state()
+{
+    var checkInputs = validateInputs("add_state");
+    if(checkInputs)
+    {
+        $("form#add_state").submit();
+    }    
+}
+
+
+function add_new_city()
+{
+    var checkInputs = validateInputs("add_city_frm");
+    if(checkInputs)
+    {
+        $("form#add_city_frm").submit();
+    }    
+}
+
+
+function view_country(id) {
+    $.ajax({
+        type: 'post',
+        url: site_path + 'admin/admin_ajax/view_country',
+        data: {
+            'id': id
+        },
+        success: function(data) {
+            if (data) {
+                var response = JSON.parse(data);
+               //alert(response[0].country_dialing_code);
+                $("#upd_country_name").val(response[0].country_name);
+                $("#upd_country_dialing_code").val(response[0].country_dialing_code);
+                $("#upd_cntry_id").val(response[0].country_id);
+            } else {
+                bootbox.alert(data.error + " !");
+            }
+        },
+        complete: function(data) {
+            
+            $('#Edit_country').modal('show');
+        }
+    });
+}
+
+
+function view_edit_state(id) {
+    $.ajax({
+        type: 'post',
+        url: site_path + 'admin/admin_ajax/view_edit_state',
+        data: {
+            'id': id
+        },
+        success: function(data) {
+            if (data) {
+                var response = JSON.parse(data);
+                //alert(response[0].country_id);
+                $("#add_new_myModalLabel").text('Update State');
+                $("#hidden_state_id").val(response[0].state_id);
+                $("#stateName").val(response[0].state_name);
+                $("#upd_cntry_id").val(response[0].country_id);
+                //$("#upd_cntry_id").val(response[0].rgn_id);
+
+                $('[name=regionName] option').filter(function() { 
+                    return ($(this).val() == response[0].rgn_id); //To select Blue
+                }).prop('selected', true);
+            } else {
+                bootbox.alert(data.error + " !");
+            }
+        },
+        complete: function(data) {
+            
+            $('#Edit_country').modal('show');
+        }
+    });
+}
+
+function view_city_detail(id) {
+    $.ajax({
+        type: 'post',
+        url: site_path + 'admin/admin_ajax/view_city_detail',
+        data: {
+            'id': id
+        },
+        success: function(data) {
+            if (data) {
+                var response = JSON.parse(data);
+                //alert(response[0].country_id);
+                $('.hide_filed').hide();
+                $("#myModalLabel_city").text('Update City');
+                $("#hidden_city_id").val(response[0].city_id);
+                $("#cityName").val(response[0].city_name);
+            } else {
+                bootbox.alert(data.error + " !");
+            }
+        },
+        complete: function(data) {
+            
+            $('#add_city_frm').modal('show');
+        }
+    });
+}
+
+
+
+
+function deleteUser(id)
+{
+    $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: site_path + 'admin/admin_ajax/delUser',
+        data: {
+            'id': id
+        },
+        success: function(data) {
+            
+            if (data) {
+                $(this).parent.parent().hide();
+            } else {
+                bootbox.alert(data.error + " !");
+            }
+        },
+        complete: function() {
+            $('#myModal').modal('hide');
+        }
+    });
+}
+
+
